@@ -13,20 +13,13 @@ function init() {
         .then((answer) => {
             switch (answer.choice) {
                 case "View All Departments":
-                    db.query('SELECT * FROM departments', function (err, results) {
-                        if (err) console.log(err);
-                        console.table(results);
-                    });
+                    view("departments")
                     break;
                 case "View All Roles":
-                    db.query('SELECT * FROM roles', function (err, results) {
-                        console.table(results);
-                    });
+                    view("roles")
                     break;
                 case "View All Employees":
-                    db.query('SELECT * FROM employees', function (err, results) {
-                        console.table(results);
-                    });
+                    view("employees")
                     break;
                 case "Add A Department":
                     add("department");
