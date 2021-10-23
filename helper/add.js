@@ -1,4 +1,5 @@
 const inquirer = require("inquirer");
+const db = require('../config/connection');
 
 const add = (type) => {
     switch (type) {

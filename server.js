@@ -3,6 +3,9 @@ const { starterQuestions, addDepartmentQuestion, addEmployeeQuestions, addRoleQu
 const db = require('./config/connection');
 const mysql = require('mysql2');
 const cTable = require('console.table');
+const add = require('./helper/add');
+const view = require('./helper/view');
+const update = require('./helper/update');
 
 function init() {
     inquirer
