@@ -6,6 +6,19 @@ const cTable = require('console.table');
 const add = require('./helper/add');
 const view = require('./helper/view');
 const update = require('./helper/update');
+require('dotenv').config();
+
+
+// Establishing Connection to database
+db.connect((err) => {
+    if (err) throw err;
+
+    // Start main menu function
+
+    console.log("\n WELCOME TO EMPLOYEE TRACKER \n");
+    init();
+});
+
 
 function init() {
     inquirer
@@ -50,4 +63,3 @@ function init() {
         })
 }
 
-init();
