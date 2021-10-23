@@ -41,3 +41,5 @@ const add = (type) => {
             break;
     }
 };
+
+module.exports={add};
