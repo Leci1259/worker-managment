@@ -1,9 +1,8 @@
-const inquirer = require("inquirer");
 const db = require('../config/connection');
 
 const view = (type) => {
     switch (type) {
-        case "department":
+        case "departments":
             let sql = `SELECT * FROM departments`;
             db.query(sql, (err, result) => {
                 if (err) console.log(err);

@@ -14,27 +14,35 @@ function init() {
             switch (answer.choice) {
                 case "View All Departments":
                     view("departments")
+                    init();
                     break;
                 case "View All Roles":
                     view("roles")
+                    init();
                     break;
                 case "View All Employees":
                     view("employees")
+                    init();
                     break;
                 case "Add A Department":
                     add("department");
+                    init();
                     break;
                 case "Add A Role":
                     add("role");
+                    init();
                     break;
                 case "Add An Employee":
                     add('employee');
+                    init();
                     break;
                 case "Update An Employee Manager":
                    update("manager");
+                   init();
                     break;
                 case "Update An Employee Role":
                     update("role");
+                    init();
                     break;
                 case "Exit":
                     process.exit();
