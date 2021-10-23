@@ -7,9 +7,9 @@ const add = (type) => {
             inquirer
                 .prompt(addDepartmentQuestion)
                 .then((answer) => {
-                    let sql = `INSERT INTO departments (name) VALUES (?)`;
-                    let params = [answer.departmentName];
-                    db.query(sql, params, (err, result) => {
+                    let dsql = `INSERT INTO departments (name) VALUES (?)`;
+                    let dparams = [answer.departmentName];
+                    db.query(dsql, dparams, (err, result) => {
                         if (err) console.log(err);
                         console.log('Department Inserted!')
                     });
@@ -19,9 +19,9 @@ const add = (type) => {
             inquirer
                 .prompt(addRoleQuestions)
                 .then((answers) => {
-                    let sql = `INSERT INTO roles(title, salary, department_id) VALUES (?)`;
-                    let params = [answers.roleName, answers.roleSalary, answers.roleDepartment];
-                    db.query(sql, params, (err, result) => {
+                    let rsql = `INSERT INTO roles(title, salary, department_id) VALUES (?)`;
+                    let rparams = [answers.roleName, answers.roleSalary, answers.roleDepartment];
+                    db.query(rsql, rparams, (err, result) => {
                         if (err) console.log(err);
                         console.log('Role Inserted!')
                     });
@@ -31,9 +31,9 @@ const add = (type) => {
             inquirer
                 .prompt(addEmployeeQuestions)
                 .then((answers) => {
-                    let sql=`INSERT INTO employees(first_name, last_name, role_id, manager_id) VALUES (?)`;
-                    let params= [answers.employeeFName,answers.employeeLName,answers.employeeRole,answers.employeeManager];
-                    db.query(sql, params, (err, result) => {
+                    let esql=`INSERT INTO employees(first_name, last_name, role_id, manager_id) VALUES (?)`;
+                    let eparams= [answers.employeeFName,answers.employeeLName,answers.employeeRole,answers.employeeManager];
+                    db.query(esql, eparams, (err, result) => {
                         if (err) console.log(err);
                         console.log('Employee Inserted!')
                     });

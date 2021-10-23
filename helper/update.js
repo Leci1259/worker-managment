@@ -18,9 +18,9 @@ const update = (type) => {
                     }
                 ])
                 .then((answers) => {
-                    let sql = `UPDATE employees SET manager = ? WHERE name = ?`;
-                    let params = [answers.managerName,answers.empName];
-                    db.query(sql, params, (err, result) => {
+                    let msql = `UPDATE employees SET manager = ? WHERE name = ?`;
+                    let mparams = [answers.managerName,answers.empName];
+                    db.query(msql, mparams, (err, result) => {
                         if (err) console.log(err);
                         console.log('Employee Manager Updated!')
                     });
@@ -41,9 +41,9 @@ const update = (type) => {
                 }
             ])
             .then((answers) => {
-                let sql = `UPDATE employees SET role = ? WHERE name = ?`;
-                let params = [answers.empRole,answers.empName];
-                db.query(sql, params, (err, result) => {
+                let rsql = `UPDATE employees SET role = ? WHERE name = ?`;
+                let rparams = [answers.empRole,answers.empName];
+                db.query(rsql, rparams, (err, result) => {
                     if (err) console.log(err);
                     console.log('Employee Role Updated!')
                 });
