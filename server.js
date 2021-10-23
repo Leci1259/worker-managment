@@ -35,12 +35,13 @@ function init() {
                     add("role");
                     break;
                 case "Add An Employee":
-                    add('employee')
+                    add('employee');
                     break;
                 case "Update An Employee Manager":
-                   
+                   update("manager");
                     break;
                 case "Update An Employee Role":
+                    update("role");
                     break;
                 case "Exit":
                     process.exit();
