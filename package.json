@@ -6,7 +6,8 @@
   "dependencies": {
     "console.table": "^0.10.0",
     "inquirer": "^8.2.0",
-    "mysql2": "^2.3.2"
+    "mysql2": "^2.3.2",
+    "sequelize": "^6.7.0"
   },
   "devDependencies": {},
   "scripts": {
