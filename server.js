@@ -1,5 +1,5 @@
 const inquirer = require("inquirer");
-const { starterQuestions, addDepartmentQuestion, addEmployeeQuestions, addRoleQuestions, updateEmployeeQuestion } = require("./lib/questions");
+const { starterQuestions} = require("./lib/questions");
 const db = require('./config/connection');
 const mysql = require('mysql2');
 const cTable = require('console.table');
@@ -27,7 +27,7 @@ function init() {
             switch (answer.choice) {
                 case "View All Departments":
                     view("departments")
-                    init();
+                    //init();
                     break;
                 case "View All Roles":
                     view("roles")

@@ -1,6 +1,6 @@
 const inquirer = require("inquirer");
 const db = require('../config/connection');
-const {addDepartmentQuestion, addEmployeeQuestions, addRoleQuestions  = require('../lib/questions')}
+const {addDepartmentQuestion, addEmployeeQuestions, addRoleQuestions} = require('../lib/questions');
 
 const add = (type) => {
     switch (type) {
