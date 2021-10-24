@@ -1,17 +1,21 @@
 const db = require('../config/connection');
+const cTable = require('console.table');
 
-const view = function(type){
+const view = function(type) {
+    console.log("inside function")
     switch (type) {
         case "departments":
             let dsql = `SELECT * FROM departments`;
+            console.log("inside departments")
             db.query(dsql, (err, result) => {
                 if (err) console.log(err);
+                console.log("ii");
                 console.table(result);
             });
 
             break;
         case "roles":
-            let rsql = `SELECT id, title, salary, department_id AS department FROM roles INNER JOIN department ON role.department_id = department.id ORDER BY ID ASC"`;
+            let rsql = `SELECT * FROM roles`;
             db.query(rsql, (err, result) => {
                 if (err) console.log(err);
                 console.table(result);
@@ -32,4 +36,4 @@ const view = function(type){
 
 };
 
-module.exports = { view };
+module.exports = view;

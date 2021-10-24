@@ -26,8 +26,13 @@ function init() {
         .then((answer) => {
             switch (answer.choice) {
                 case "View All Departments":
-                    view("departments")
-                    //init();
+                    let dsql = `SELECT * FROM departments`;
+                    console.log("inside departments")
+                    db.query(dsql, (err, result) => {
+                        if (err) console.log(err);
+                        console.log("ii");
+                        console.table(result);
+                    });
                     break;
                 case "View All Roles":
                     view("roles")
@@ -39,23 +44,23 @@ function init() {
                     break;
                 case "Add A Department":
                     add("department");
-                    init();
+                    //init();
                     break;
                 case "Add A Role":
                     add("role");
-                    init();
+                    //init();
                     break;
                 case "Add An Employee":
                     add('employee');
-                    init();
+                    //init();
                     break;
                 case "Update An Employee Manager":
                    update("manager");
-                   init();
+                   //init();
                     break;
                 case "Update An Employee Role":
                     update("role");
-                    init();
+                    //init();
                     break;
                 case "Exit":
                     process.exit();
