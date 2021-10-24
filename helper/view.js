@@ -10,7 +10,6 @@ const view = function(type) {
                 console.table(result);
                 
             });
-
             break;
         case "roles":
             let rsql = `SELECT * FROM roles`;

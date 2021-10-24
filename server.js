@@ -31,11 +31,11 @@ async function init() {
                     break;
                 case "View All Roles":
                     view("roles");
-                    init()
+                    init();
                     break;
                 case "View All Employees":
                     view("employees");
-                    //init();
+                    init();
                     break;
                 case "Add A Department":
                     add("department");
@@ -61,5 +61,6 @@ async function init() {
                     process.exit();
             }
         })
+        
 }
 

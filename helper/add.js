@@ -1,8 +1,8 @@
 const inquirer = require("inquirer");
 const db = require('../config/connection');
-const {addDepartmentQuestion, addEmployeeQuestions, addRoleQuestions} = require('../lib/questions');
+const { addDepartmentQuestion, starterQuestions } = require('../lib/questions');
 
-const add = (type) => {
+const add = function (type) {
     switch (type) {
         case "department":
             inquirer
@@ -17,30 +17,103 @@ const add = (type) => {
                 });
             break;
         case "role":
-            inquirer
-                .prompt(addRoleQuestions)
-                .then((answers) => {
-                    let rsql = `INSERT INTO roles(title, salary, department_id) VALUES (?)`;
-                    let rparams = [answers.roleName, answers.roleSalary, answers.roleDepartment];
-                    db.query(rsql, rparams, (err, result) => {
-                        if (err) console.log(err);
-                        console.log('Role Inserted!')
-                    });
+            const addRoleQuery = `SELECT * FROM departments`;
+            db.query(addRoleQuery, (err, results) => {
+                if (err) console.log(err);
+                let choiceArray = [];
+                results.forEach((element) => {
+                    choiceArray.push(`${element.id}:${element.name}`);
+
                 });
+
+                inquirer
+                    .prompt([
+                        {
+                            type: "input",
+                            message: "What is the role's title?",
+                            name: "roleName",
+                        },
+                        {
+                            type: "input",
+                            message: "What is the role's salary?",
+                            name: "roleSalary",
+                        },
+                        {
+                            type: "list",
+                            message: "Which department does the role belong to?",
+                            name: "roleDepartment",
+                            choices: choiceArray
+                        },
+                    ])
+                    .then((answers) => {
+                        let role_dept = answers.roleDepartment.substring(0, answers.roleDepartment.indexOf(":"));
+                        console.log(role_dept)
+                        let rsql = `INSERT INTO roles(title, salary, department_id) VALUES ("${answers.roleName}",${answers.roleSalary}, ${role_dept})`;
+                        db.query(rsql, (err, result) => {
+                            if (err) console.log(err);
+                            console.log('Role Inserted!')
+                        });
+                    });
+            });
             break;
         case "employee":
-            inquirer
-                .prompt(addEmployeeQuestions)
-                .then((answers) => {
-                    let esql=`INSERT INTO employees(first_name, last_name, role_id, manager_id) VALUES (?)`;
-                    let eparams= [answers.employeeFName,answers.employeeLName,answers.employeeRole,answers.employeeManager];
-                    db.query(esql, eparams, (err, result) => {
-                        if (err) console.log(err);
-                        console.log('Employee Inserted!')
-                    });
+            const addEMPQuery="SELECT * FROM employees JOIN roles ON employees.role_id = roles.id"
+            db.query(addEMPQuery, (err, results) => {
+                if (err) console.log(err);
+                let manArray = [];
+                let roleArray = [];
+
+                results.forEach((element) => {
+                    manArray.push(`${element.id}:${element.first_name} ${element.last_name}`);
                 });
+
+                results.forEach((element) => {
+                    roleArray.push(`${element.id}:${element.title}`);
+                });
+
+                inquirer
+                    .prompt([
+                        {
+                            type: "input",
+                            message: "What is the employee's first name?",
+                            name: "employeeFName",
+                        },
+                        {
+                            type: "input",
+                            message: "What is the employee's last name?",
+                            name: "employeeLName",
+                        },
+                        {
+                            type: "list",
+                            message: "Which is the employee's role?",
+                            name: "employeeRole",
+                            choices: roleArray,
+                        },
+                        {
+                            type: "list",
+                            message: "Who is the employee's manager?",
+                            name: "employeeManager",
+                            choices: manArray,
+                        },
+                    ])
+                    .then((answers) => {
+                        let roleId = answers.employeeRole.substring(0, answers.employeeRole.indexOf(":")
+                        );
+
+                        let manId = answers.employeeManager.substring(0, answers.employeeManager.indexOf(":")
+                        );
+                        let esql = `INSERT INTO employees(first_name, last_name, role_id, manager_id) VALUES ("${answers.employeeFName}","${answers.employeeLName}",${roleId}, ${manId})`;
+                        
+                        db.query(esql, (err, result) => {
+                            if (err) console.log(err);
+                            console.log('Employee Inserted!')
+                        });
+
+                    });
+            });
             break;
     }
-};
+}
 
-module.exports={add};
+
+module.exports = add;
