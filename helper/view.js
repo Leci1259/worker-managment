@@ -2,15 +2,13 @@ const db = require('../config/connection');
 const cTable = require('console.table');
 
 const view = function(type) {
-    console.log("inside function")
     switch (type) {
         case "departments":
             let dsql = `SELECT * FROM departments`;
-            console.log("inside departments")
             db.query(dsql, (err, result) => {
                 if (err) console.log(err);
-                console.log("ii");
                 console.table(result);
+                
             });
 
             break;
