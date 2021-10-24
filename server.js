@@ -20,18 +20,18 @@ db.connect((err) => {
 });
 
 
-function init() {
+async function init() {
     inquirer
         .prompt(starterQuestions)
         .then((answer) => {
-            console.log("initial prompt is",answer.choice)
             switch (answer.choice) {
                 case "View All Departments":
                     view("departments");
+                    init();
                     break;
                 case "View All Roles":
                     view("roles");
-                    //init()
+                    init()
                     break;
                 case "View All Employees":
                     view("employees");
