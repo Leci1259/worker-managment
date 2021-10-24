@@ -26,20 +26,14 @@ function init() {
         .then((answer) => {
             switch (answer.choice) {
                 case "View All Departments":
-                    let dsql = `SELECT * FROM departments`;
-                    console.log("inside departments")
-                    db.query(dsql, (err, result) => {
-                        if (err) console.log(err);
-                        console.log("ii");
-                        console.table(result);
-                    });
+                    view("departments");
                     break;
                 case "View All Roles":
-                    view("roles")
+                    view("roles");
                     //init();
                     break;
                 case "View All Employees":
-                    view("employees")
+                    view("employees");
                     //init();
                     break;
                 case "Add A Department":
