@@ -45,7 +45,7 @@
 
   ## Application
   [Deployed Application](https://github.com/Leci1259/worker-managment)  
-  ![Screenshot](https://github.com/Leci1259/worker-managment/blob/main/img/Screenshot%202021-10-24%20002145.png)(https://drive.google.com/file/d/1o90bPWhXjMNqNPg-tyMH-iuvF7zXO3op/view?usp=sharing)
+  [![Screenshot](https://github.com/Leci1259/worker-managment/blob/main/img/Screenshot%202021-10-24%20002145.png)](https://drive.google.com/file/d/1o90bPWhXjMNqNPg-tyMH-iuvF7zXO3op/view?usp=sharing)
   
   ## Contribution 
 
