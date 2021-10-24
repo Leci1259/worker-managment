@@ -38,7 +38,7 @@ VALUES
     ("Taylor", "Goree", 6, NULL),
     ("Mia", "Ricks", 7, 5),
     ("Sophie", "Zemrani", 8, 3),
-    ("Brianna", "Williams", 15, 2)
+    ("Brianna", "Williams", 15, 2),
     ("Knomi", "Smith", 9, NULL),
     ("Daija", "Moody", 10, 2),
     ("Jesseka", "Chatman", 11, 5),
